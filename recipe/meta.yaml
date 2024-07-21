@@ -1,7 +1,6 @@
 {% set version = '1.9' %}
 
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-abcrf
@@ -14,8 +13,7 @@ source:
   sha256: b1eb36bd10dd71ede3274dcd243131b79fee32fb385c8b4d7715dcfe8c0ab022
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
@@ -25,7 +23,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
@@ -48,7 +48,6 @@ requirements:
 
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-mass
     - r-rcpp >=0.11.2
     - r-rcpparmadillo
