@@ -1,4 +1,4 @@
-{% set version = '1.9' %}
+{% set version = "2.0" %}
 
 {% set posix = 'm2-' if win else '' %}
 
@@ -10,15 +10,15 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/abcrf_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/abcrf/abcrf_{{ version }}.tar.gz
-  sha256: b1eb36bd10dd71ede3274dcd243131b79fee32fb385c8b4d7715dcfe8c0ab022
+  sha256: 9234ac1da41caf4caa935e10084fee8e88e9891432d7166c310a7b8502f437ef
 
 build:
-  number: 3
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
   missing_dso_whitelist:
-     - '*/R.dll'            # [win]
+    - '*/R.dll'             # [win]
 
 requirements:
   build:
@@ -66,15 +66,12 @@ test:
 about:
   home: https://CRAN.R-project.org/package=abcrf
   license: GPL-2.0-or-later
-  summary: Performs Approximate Bayesian Computation (ABC) model choice and parameter inference
-    via random forests. Pudlo P., Marin J.-M., Estoup A., Cornuet J.-M., Gautier M.
-    and Robert C. P. (2016) <doi:10.1093/bioinformatics/btv684>. Estoup A., Raynal L.,
-    Verdu P. and Marin J.-M. <http://journal-sfds.fr/article/view/709>. Raynal L., Marin
-    J.-M., Pudlo P., Ribatet M., Robert C. P. and Estoup A. (2019) <doi:10.1093/bioinformatics/bty867>.
+  summary: Performs Approximate Bayesian Computation (ABC) model choice and parameter inference via random forests. Pudlo P., Marin J.-M., Estoup A., Cornuet J.-M., Gautier M. and Robert C. P. (2016) <doi:10.1093/bioinformatics/btv684>. Estoup A., Raynal L., Verdu P. and Marin J.-M. <http://journal-sfds.fr/article/view/709>.
+    Raynal L., Marin J.-M., Pudlo P., Ribatet M., Robert C. P. and Estoup A. (2019) <doi:10.1093/bioinformatics/bty867>.
   license_family: GPL2
   license_file:
-     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
-     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
